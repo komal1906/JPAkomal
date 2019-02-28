@@ -10,7 +10,7 @@ import javax.persistence.Column;
 	public class Employee {
 		@Id
 		@Column(name="emp_id", length=20)// if we don't write then it will create automatically by table  name
-		private int empId;
+		private int empId;// property name-empId
 		@Column(name="emp_name", length=30)
 		private String empName;
 		@Column(name="emp_sal", length=10)
