@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">	
+	
+<!--  using setter injection
+<bean id="e1" class="com.cg.spring.beans.Employee">
+
+<property name="firstName" value="sonal"></property>
+<property name="lastName" value="agrawal"></property>
+<property name="age" value="20"></property>
+</bean>
+-->
+
+<!-- using constructor injection 
+<bean id="e1" class="com.cg.spring.beans.Employee">
+<constructor-arg index="0" value="komal"></constructor-arg>
+<constructor-arg index="1" value="agrawal"></constructor-arg>
+<constructor-arg index="2" value="20"></constructor-arg>
+</bean>
+-->
+
+<!-- when we use 2 parameter constructor in employee java then we can also define constructor injection like this but this approach is not good when we use two parameters of same data type
+<bean id="e1" class="com.cg.spring.beans.Employee">
+<constructor-arg type="int" value="20"></constructor-arg>
+<constructor-arg type="String" value="komal agrawal"></constructor-arg>
+</bean>
+-->
+
+<!--  in this we use arrayList or any collections 
+<bean id="e1" class="com.cg.spring.beans.Employee">
+<constructor-arg type="int" value="20"></constructor-arg>
+<constructor-arg type="String" value="komal agrawal"></constructor-arg>
+<property name="skills">
+<list>
+<value>c</value>
+<value>c++</value>
+<value>java</value>
+<value>html</value>
+</list>
+</property>
+</bean>
+-->
+
+<!-- in this we use hashmap  
+<bean id="u1" class="com.cg.spring.beans.UserCredentials">
+<property name="credentials">
+<map>
+<entry key="user1" value="a"></entry>
+<entry key="user2" value="b"></entry>
+<entry key="user3" value="c"></entry>
+</map>
+</property>
+</bean>
+-->
+
+<!--  in this we use department and employee nd by using manual
+<bean id="e1" class="com.cg.spring.beans.Employee">
+<property name="firstName" value="A"></property>
+<property name="lastName" value="B"></property>
+<property name="age" value="20"></property>
+<property name="dept" ref="d1">
+</property>
+</bean>
+<bean class="com.cg.spring.beans.Department" id="d1">
+<property name="deptNo" value="1"></property>
+<property name="deptName" value="admin"></property>
+</bean>
+<bean id="e2" class="com.cg.spring.beans.Employee">
+<property name="firstName" value="x"></property>
+<property name="lastName" value="y"></property>
+<property name="age" value="21"></property>
+<property name="dept" ref="d1">
+</property>
+</bean>
+-->
+
+<!--  when we only use 1 department we use this otherwise it shows exceptions and in this we use auto wiring  
+<bean id="e1" class="com.cg.spring.beans.Employee" autowire="byType">
+<property name="firstName" value="A"></property>
+<property name="lastName" value="B"></property>
+<property name="age" value="20"></property>
+</bean>
+<bean class="com.cg.spring.beans.Department" id="d1">
+<property name="deptNo" value="1"></property>
+<property name="deptName" value="admin"></property>
+</bean>
+<bean id="e2" class="com.cg.spring.beans.Employee" autowire="byType">
+<property name="firstName" value="x"></property>
+<property name="lastName" value="y"></property>
+<property name="age" value="21"></property>
+</bean>
+-->
+
+<!--  when we only use 1 department we use this otherwise it shows exceptions and in this we use auto wiring  
+<bean id="e1" class="com.cg.spring.beans.Employee" autowire="constructor">
+<property name="firstName" value="A"></property>
+<property name="lastName" value="B"></property>
+<property name="age" value="20"></property>
+</bean>
+<bean class="com.cg.spring.beans.Department" id="d1">
+<property name="deptNo" value="1"></property>
+<property name="deptName" value="admin"></property>
+</bean>
+<bean id="e2" class="com.cg.spring.beans.Employee">
+<property name="firstName" value="x"></property>
+<property name="lastName" value="y"></property>
+<property name="age" value="21"></property>
+<property name="dept" ref="d2">
+</property>
+</bean>
+<bean class="com.cg.spring.beans.Department" id="d2">
+<property name="deptNo" value="2"></property>
+<property name="deptName" value="HR"></property>
+</bean>
+-->
+
+
+<bean id="e1" class="com.cg.spring.beans.Employee" autowire="constructor" init-method="m1" destroy-method="m2">
+<property name="firstName" value="A"></property>
+<property name="lastName" value="B"></property>
+<property name="age" value="20"></property>
+</bean>
+<bean class="com.cg.spring.beans.Department" id="d1">
+<property name="deptNo" value="1"></property>
+<property name="deptName" value="admin"></property>
+</bean>
+<bean id="e2" class="com.cg.spring.beans.Employee">
+<property name="firstName" value="x"></property>
+<property name="lastName" value="y"></property>
+<property name="age" value="21"></property>
+<property name="dept" ref="d2">
+</property>
+</bean>
+<bean class="com.cg.spring.beans.Department" id="d2">
+<property name="deptNo" value="2"></property>
+<property name="deptName" value="HR"></property>
+</bean>
+
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
